@@ -1,6 +1,12 @@
 import logo from "../Images/Shoppr.png";
+import { useSelector, useDispatch } from 'react-redux'
+import { decrement, increment } from '../Features/counter/counterSlice'
 
 const Header = () => {
+
+  const count = useSelector((state) => state.counter.value)
+  const dispatch = useDispatch()
+
   return (
     <div>
       <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -43,9 +49,8 @@ const Header = () => {
             <div class="navbar-item">
               <div class="buttons">
                 <a class="button is-info">
-                  <strong>Sign up</strong>
+                  <strong>Cart: <span>{count}</span></strong>
                 </a>
-                <a class="button is-light">Log in</a>
               </div>
             </div>
           </div>
