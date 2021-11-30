@@ -1,6 +1,8 @@
 import logo from "../Images/Shoppr.png";
+
+// Redux
 import { useSelector, useDispatch } from 'react-redux'
-import { decrement, increment } from '../Features/counter/counterSlice'
+import { home, products, about, contact } from '../Features/screen/screenSlice'
 
 const Header = () => {
 
@@ -30,17 +32,16 @@ const Header = () => {
 
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item">Home</a>
+            <a class="navbar-item" onClick={() => dispatch(home())}>Home</a>
 
-            <a class="navbar-item">Documentation</a>
+            <a class="navbar-item" onClick={() => dispatch(products())}>Products</a>
 
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">More</a>
 
               <div class="navbar-dropdown">
-                <a class="navbar-item">About</a>
-                <a class="navbar-item">Jobs</a>
-                <a class="navbar-item">Contact</a>
+                <a class="navbar-item" onClick={() => dispatch(about())}>About</a>
+                <a class="navbar-item" onClick={() => dispatch(contact())}>Contact</a>
               </div>
             </div>
           </div>

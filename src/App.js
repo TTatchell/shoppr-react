@@ -4,12 +4,9 @@ import "bulma/css/bulma.min.css";
 
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
-import { home, products, about, contact } from './Features/screen/screenSlice'
 
 // Components
 import Header from './Components/Header';
-import HomePage from './Components/HomePage';
-import Products from './Components/Products';
 import Footer from './Components/Footer';
 
 function App() {
