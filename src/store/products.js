@@ -1,14 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 import { apiCallBegan } from "./api";
 
-
-
-export const productsSlice = createSlice({
-    name: 'products',
+const slice = createSlice({
+    name: "products",
     initialState: {
-        value: [],
+        list: [],
         loading: false,
     },
+
     reducers: {
         productsRequested: (products, action) => {
             products.loading = true;
@@ -23,17 +22,16 @@ export const productsSlice = createSlice({
             products.loading = false;
         },
     },
-})
+});
 
-export const { productsRequested, productsReceived, productsRequestFailed } = productsSlice.actions
+export default slice.reducer;
 
-export default productsSlice.reducer
+const { productsRequested, productsReceived, productsRequestFailed } = slice.actions;
 
-
-
-const url = "http://127.0.0.1:3000/categories";
+const url = "/products";
 
 export const loadproducts = () => (dispatch) => {
+    console.log("loadProducts occurring");
     return dispatch(
         apiCallBegan({
             url,
