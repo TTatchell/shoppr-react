@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { loadproducts } from "../store/products";
+import { loadproducts } from "../Features/products/productsSlice.js";
 import { useEffect } from "react";
 
 const Products = () => {

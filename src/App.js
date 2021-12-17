@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./Styles/App.css";
 import "bulma/css/bulma.min.css";
 
