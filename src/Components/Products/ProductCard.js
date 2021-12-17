@@ -1,4 +1,10 @@
+import { useSelector, useDispatch } from 'react-redux'
+import { addToCart } from '../../Features/cart/cartSlice'
+
 export const ProductCard = (props) => {
+    const count = useSelector((state) => state.cart.count)
+    const dispatch = useDispatch()
+
     return (
         <section className='section'>
             <div className='card'>
@@ -12,7 +18,10 @@ export const ProductCard = (props) => {
                     <p className="card-header-title is-centered">${props.product.price}</p>
                 </header>
                 <footer className="card-footer">
-                    <button className="card-footer-item button is-info">Add To Cart</button>
+                    <button 
+                    className="card-footer-item button is-info"
+                    onClick={() => dispatch(addToCart(props.product))}
+                    >Add To Cart</button>
                 </footer>
             </div>
         </section>
