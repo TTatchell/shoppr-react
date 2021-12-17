@@ -1,6 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { loadproducts } from "../Features/products/productsSlice.js";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { LoadingBar } from './LoadingBar'
+import { NoProductsError } from "./NoProductError.js";
+import { ProductCard } from "./ProductCard.js";
+import { ProductHeader } from './ProductHeader';
 
 const Products = () => {
     const dispatch = useDispatch();
@@ -12,7 +16,6 @@ const Products = () => {
     }, [dispatch]);
 
     if (products.requestSucceeded === true) {
-
         const col1 = [];
         const col2 = [];
 
@@ -27,61 +30,19 @@ const Products = () => {
 
         return (
             <div>
-                <div>
-                    <section className="hero is-info is-medium is-bold">
-                        <div className="hero-body">
-                            <div className="container has-text-centered">
-                                <h1 className="title">Products</h1>
-                            </div>
-                        </div>
-                    </section>
-                </div>
+                < ProductHeader />
                 <section className='section'>
                     <div class="columns">
                         <div class="column">
 
                             {col1.map((product, index) => (
-
-                                <section className='section'>
-
-                                    <div className='card-image'>
-                                        <figure className="image is-16by9">
-                                            <img src={product.image_url} alt={product.name}></img>
-                                        </figure>
-                                    </div>
-                                    <div className='card'>
-                                        <header class="card-header">
-                                        <p class="card-header-title is-centered">{product.name}</p>
-                                        <p class="card-header-title is-centered">${product.price}</p>
-                                        </header>
-                                        <footer class="card-footer">
-                                            <button class="card-footer-item button is-info">Add To Cart</button>
-                                        </footer>
-                                    </div>
-                                </section>
+                                < ProductCard product={product} />
                             ))}
                         </div>
                         <div class="column">
 
                             {col2.map((product, index) => (
-
-                                <section className='section'>
-
-                                    <div className='card-image'>
-                                        <figure className="image is-16by9">
-                                            <img src={product.image_url} alt={product.name}></img>
-                                        </figure>
-                                    </div>
-                                    <div className='card'>
-                                        <header class="card-header">
-                                        <p class="card-header-title is-centered">{product.name}</p>
-                                        <p class="card-header-title is-centered">${product.price}</p>
-                                        </header>
-                                        <footer class="card-footer">
-                                            <button class="card-footer-item button is-info">Add To Cart</button>
-                                        </footer>
-                                    </div>
-                                </section>
+                                < ProductCard product={product} />
                             ))}
                         </div>
 
@@ -93,44 +54,16 @@ const Products = () => {
     else if (products.loading) {
         return (
             <div>
-                <div>
-                    <section className="hero is-info is-medium is-bold">
-                        <div className="hero-body">
-                            <div className="container has-text-centered">
-                                <h1 className="title">Products</h1>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-                <section className="section">
-                    <progress class="progress is-large is-info" max="100">60%</progress>
-                </section>
+                < ProductHeader />
+                < LoadingBar />
             </div>
         )
     }
     else {
         return (
             <div>
-                <div>
-                    <section className="hero is-info is-medium is-bold">
-                        <div className="hero-body">
-                            <div className="container has-text-centered">
-                                <h1 className="title">Products</h1>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-                <section className="section">
-
-                    <article className="message is-warning">
-                        <div className="message-header">
-                            <p>Hmm. Something isn't right</p>
-                        </div>
-                        <div className="message-body">
-                            At this time, there are no products to display. Try refreshing the page.
-                        </div>
-                    </article>
-                </section>
+                < ProductHeader />
+                < NoProductsError />
             </div>
         )
     }
