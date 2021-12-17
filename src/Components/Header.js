@@ -2,7 +2,7 @@ import logo from "../Images/Shoppr.png";
 
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
-import { home, products, about, contact } from '../Features/screen/screenSlice'
+import { home, products, about, contact, cart } from '../Features/screen/screenSlice'
 
 const Header = () => {
 
@@ -49,7 +49,7 @@ const Header = () => {
           <div className="navbar-end">
             <div className="navbar-item">
               <div className="buttons">
-                <a className="button is-info">
+                <a className="button is-info" onClick={() => dispatch(cart())}>
                   <strong>Cart: <span>{count}</span></strong>
                 </a>
               </div>

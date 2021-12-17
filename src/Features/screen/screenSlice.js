@@ -4,6 +4,7 @@ import HomePage from '../../Components/HomePage';
 import Products from '../../Components/Products';
 import About from '../../Components/About';
 import Contact from '../../Components/Contact';
+import Cart from '../../Components/Cart'
 
 export const screenSlice = createSlice({
     name: 'screen',
@@ -23,9 +24,12 @@ export const screenSlice = createSlice({
         contact: (state) => {
             state.value = < Contact />
         },
+        cart: (state) => {
+            state.value = < Cart />
+        },
     },
 })
 
-export const { home, products, about, contact } = screenSlice.actions
+export const { home, products, about, contact, cart } = screenSlice.actions
 
 export default screenSlice.reducer
