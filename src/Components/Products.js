@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { loadproducts } from "../Features/products/productsSlice.js";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { LoadingBar } from './LoadingBar'
 import { NoProductsError } from "./NoProductError.js";
-import { ProductCard } from "./ProductCard.js";
-import { ProductHeader } from './ProductHeader';
+import { ProductCard } from "./Products/ProductCard.js";
+import { ProductHeader } from './Products/ProductHeader';
 
 const Products = () => {
     const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const Products = () => {
         const col2 = [];
 
         products.list.map((product, index) => {
-            if ((index & 1) == 0) {
+            if ((index & 1) === 0) {
                 col1.push(product);
             }
             else {
@@ -32,14 +32,14 @@ const Products = () => {
             <div>
                 < ProductHeader />
                 <section className='section'>
-                    <div class="columns">
-                        <div class="column">
+                    <div className="columns">
+                        <div className="column">
 
                             {col1.map((product, index) => (
                                 < ProductCard product={product} />
                             ))}
                         </div>
-                        <div class="column">
+                        <div className="column">
 
                             {col2.map((product, index) => (
                                 < ProductCard product={product} />
