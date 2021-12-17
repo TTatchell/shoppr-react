@@ -1,6 +1,14 @@
 const Contact = () => {
     return (
-        <h1>CONTACT PAGE</h1>
+        <div>
+            <section className="hero is-info is-medium is-bold">
+                <div className="hero-body">
+                    <div className="container has-text-centered">
+                        <h1 className="title">Contact Us</h1>
+                    </div>
+                </div>
+            </section>
+        </div>
     )
 }
 

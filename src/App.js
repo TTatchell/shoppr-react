@@ -17,7 +17,7 @@ function App() {
   const screen = useSelector((state) => state.screen.value)
 
   return (
-    <div classname='main'>
+    <div className='main'>
       < Header />
       {screen}
       < Footer />

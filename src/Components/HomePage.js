@@ -4,13 +4,13 @@ const HomePage = () => {
 
   return (
     <div>
-      <section class="hero">
-        <img src={HomeSplashImage}></img>
+      <section className="hero">
+        <img src={HomeSplashImage} alt="Necklace"></img>
       </section>
-      <section class="hero is-info">
-        <div class="hero-body">
-          <p class="title">Hey there,</p>
-          <p class="subtitle">Welcome to Shoppr</p>
+      <section className="hero is-info">
+        <div className="hero-body">
+          <p className="subtitle">Welcome to</p>
+          <p className="title">Shoppr</p>
         </div>
       </section>
     </div>

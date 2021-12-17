@@ -5,6 +5,7 @@ const api =
     ({ dispatch }) =>
     (next) =>
     async (action) => {
+        console.log("Middleware doing something");
         if (action.type !== actions.apiCallBegan.type) return next(action);
 
         const { url, method, data, onStart, onSuccess, onError } =
