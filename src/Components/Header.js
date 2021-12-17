@@ -6,7 +6,7 @@ import { home, products, about, contact, cart } from '../Features/screen/screenS
 
 const Header = () => {
 
-  const count = useSelector((state) => state.counter.value)
+  const count = useSelector((state) => state.cart.count)
   const dispatch = useDispatch()
 
   return (

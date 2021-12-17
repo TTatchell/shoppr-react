@@ -14,6 +14,25 @@ const Cart = () => {
                     </div>
                 </div>
             </section>
+            <section className="section">
+                
+                {cart.list.map((product, index) => (
+                    <article class="message is-dark">
+                        <div class="message-header">
+                            <p>{product.name} - ${product.price}</p>
+                            <button class="delete" aria-label="delete" onClick={() => dispatch(removeFromCart(product))}></button>
+                        </div>
+                        <div class="message-body">
+                            {product.description}
+                        </div>
+                    </article>
+                ))}
+            </section>
+            <section class="hero is-info">
+                <div className="hero-body">
+                    <h1 className="subtitle">Your Total: ${cart.total}</h1>
+                </div>
+            </section>
         </div>
     )
 }

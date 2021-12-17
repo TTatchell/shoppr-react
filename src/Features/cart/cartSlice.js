@@ -4,16 +4,19 @@ export const cartSlice = createSlice({
     name: 'cart',
     initialState: {
         list: [],
-        count: 0
+        count: 0,
+        total: 0
     },
     reducers: {
         addToCart: (cart, action) => {
             console.log("Added to cart!")
             cart.count += 1
+            cart.total += action.payload.price
             cart.list.push(action.payload);
         },
         removeFromCart: (cart, action) => {
-            // Remove from cart logic
+            cart.list = cart.list.filter((element) => element.id != action.payload.id)
+            cart.total -= action.payload.price
             cart.count -= 1
         },
     },
