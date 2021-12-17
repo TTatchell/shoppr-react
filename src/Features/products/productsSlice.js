@@ -6,6 +6,7 @@ const productSlice = createSlice({
     initialState: {
         list: [],
         loading: false,
+        requestSucceeded: false
     },
 
     reducers: {
@@ -15,10 +16,12 @@ const productSlice = createSlice({
 
         productsReceived: (products, action) => {
             products.list = action.payload;
+            products.requestSucceeded = true;
             products.loading = false;
         },
 
         productsRequestFailed: (products, action) => {
+            products.requestSucceeded = false;
             products.loading = false;
         },
     },

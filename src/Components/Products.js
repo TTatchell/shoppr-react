@@ -4,14 +4,27 @@ import { useEffect } from "react";
 
 const Products = () => {
     const dispatch = useDispatch();
-    const products = useSelector((state) => state.list);
+    const products = useSelector((state) => state.products);
 
     useEffect(() => {
         console.log("Use effect starting");
         dispatch(loadproducts());
     }, [dispatch]);
 
-    if (products) {
+    if (products.requestSucceeded === true) {
+
+        const col1 = [];
+        const col2 = [];
+
+        products.list.map((product, index) => {
+            if ((index & 1) == 0) {
+                col1.push(product);
+            }
+            else {
+                col2.push(product);
+            }
+        });
+
         return (
             <div>
                 <div>
@@ -23,13 +36,77 @@ const Products = () => {
                         </div>
                     </section>
                 </div>
-                <ul>
-                    {products.map((product) => (
-                        <li key={product.id}>{product.title}</li>
-                    ))}
-                </ul>
+                <section className='section'>
+                    <div class="columns">
+                        <div class="column">
+
+                            {col1.map((product, index) => (
+
+                                <section className='section'>
+
+                                    <div className='card-image'>
+                                        <figure className="image is-16by9">
+                                            <img src={product.image_url} alt={product.name}></img>
+                                        </figure>
+                                    </div>
+                                    <div className='card'>
+                                        <header class="card-header">
+                                        <p class="card-header-title is-centered">{product.name}</p>
+                                        <p class="card-header-title is-centered">${product.price}</p>
+                                        </header>
+                                        <footer class="card-footer">
+                                            <button class="card-footer-item button is-info">Add To Cart</button>
+                                        </footer>
+                                    </div>
+                                </section>
+                            ))}
+                        </div>
+                        <div class="column">
+
+                            {col2.map((product, index) => (
+
+                                <section className='section'>
+
+                                    <div className='card-image'>
+                                        <figure className="image is-16by9">
+                                            <img src={product.image_url} alt={product.name}></img>
+                                        </figure>
+                                    </div>
+                                    <div className='card'>
+                                        <header class="card-header">
+                                        <p class="card-header-title is-centered">{product.name}</p>
+                                        <p class="card-header-title is-centered">${product.price}</p>
+                                        </header>
+                                        <footer class="card-footer">
+                                            <button class="card-footer-item button is-info">Add To Cart</button>
+                                        </footer>
+                                    </div>
+                                </section>
+                            ))}
+                        </div>
+
+                    </div>
+                </section>
             </div>
         );
+    }
+    else if (products.loading) {
+        return (
+            <div>
+                <div>
+                    <section className="hero is-info is-medium is-bold">
+                        <div className="hero-body">
+                            <div className="container has-text-centered">
+                                <h1 className="title">Products</h1>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <section className="section">
+                    <progress class="progress is-large is-info" max="100">60%</progress>
+                </section>
+            </div>
+        )
     }
     else {
         return (

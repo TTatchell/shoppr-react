@@ -12,7 +12,7 @@ export default configureStore({
   reducer: {
     counter: counterReducer,
     screen: screenReducer,
-    productReducer,
+    products: productReducer,
   },
   middleware: [...getDefaultMiddleware(), api],
 })
